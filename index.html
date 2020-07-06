@@ -1,12 +1,69 @@
 |<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
     <title>Document</title>
-</head>
-<body>
-    <h1>asdasfafs</h1>
-</body>
+  </head>
+  <body>
+    <input
+      class="form-control mr-sm-2"
+      id="form-input"
+      type="search"
+      placeholder="digita il cocktail da ricercare"
+      aria-label="Search"
+    />
+    <button
+      class="btn btn-outline-success my-2 my-sm-0"
+      id="form-btn"
+      type="submit"
+    >
+      Search
+    </button>
+    <div class="container" id="cocktail">
+      <div class="cocktail" style="width: 18rem;">
+        <img src="..." class="cocktail-img" alt="..." style="width: 200px;"/>
+        <div class="cocktail-body">
+          <h1 class="cocktail-title"></h1>
+          <p class="cocktail-text">
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + form_input"></a> -->
+    <script>
+      function popola_cocktail(array) {
+        //   array.forEach((element) => {
+        //       let cocktail_card = '';
+        //       cocktail_card = cocktail_card + `<div>${element.strDrink}</div>`
+        //       document.querySelector('.cocktail-text').innerHTML = cocktail_card;
+        //   });
+        document.querySelector('.cocktail-img').src = array.drinks[0].strDrinkThumb;
+        document.querySelector('.cocktail-title').textContent = array.drinks[0].strDrink;
+        document.querySelector('.cocktail-text').textContent = array.drinks[0].strInstructions;
+      }
+
+      let form_input = document.getElementById("form-input");
+      let btn_input = document.getElementById("form-btn");
+      btn_input.addEventListener("click", () => {
+        axios
+          .get(
+            "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+              form_input.value
+          )
+          .then((response) => {
+            //   console.log(form_input)
+            //   console.log(response.data)
+            popola_cocktail(response.data);
+          });
+      });
+    </script>
+  </body>
 </html>

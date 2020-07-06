@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+  <title>Random Cocktail</title>
+</head>
+<body>
+  <h1>prova</h1>
+  <div class="container">
+    <div class="cocktail" id="cocktail-title"></div>
+    <img src="" alt="" id="cocktail-img" style="width: 200px;">
+  </div>
+  <script>
+
+    axios.get("https://www.thecocktaildb.com/api/json/v1/1/random.php").then((response) =>{
+      console.log(response.data);
+      let cocktail_random = response.data
+      document.getElementById("cocktail-title").textContent = cocktail_random.drinks[0].strDrink;
+      document.getElementById('cocktail-img').src = cocktail_random.drinks[0].strDrinkThumb;
+
+
+
+
+    })
+  </script>
+</body>
+</html>
