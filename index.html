@@ -13,7 +13,7 @@
     <title>Document</title>
   </head>
   <body>
-    
+    <p>qualcosa ciao</p>
     <!--Search toolbar-->
     <nav class="navbar navbar-light bg-light">
         <h3 class="navbar-brand">Wellcome to the jungle baby!</h3>
@@ -31,17 +31,7 @@
       >Search</button>
     </nav>
     <!--RISULTATO DELLA RICERCA (REINDIRIZZARE SU UN'ALTRA PAGINA?)-->
-    <div class="container-cocktail text-center" id="cocktail-prova">
-        
-        <div class="container" id="cocktail">
-        <div class="cocktail" style="width: 18rem;">
-          <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-          <div class="cocktail-body">
-            <h1 class="cocktail-title"></h1>
-            <p class="cocktail-text" id="prova"></p>
-          </div>
-      </div>
-    </div>
+    <div class="container-cocktail text-center" id="cocktail-prova"></div>
     <!--SEZIONE DEI + RICERCATI-->
     <!-- <div class="container">
       <h2>i cocktail più ricercati</h2>
@@ -108,9 +98,21 @@
         console.log(array)
         let cocktail_card = '';
           array.drinks.forEach((element) => {
-              cocktail_card = cocktail_card + `<div>${element.strDrink}</div>`+
-              `<img src=${element.strDrinkThumb} style="width: 200px;">`+
-              `<div>${element.strInstructions}</div>`
+              cocktail_card = cocktail_card +     
+              `<div class="container-cocktail text-center" id="cocktail-prova">  
+                <div class="container" id="cocktail">
+                  <div class="cocktail" style="width: 18rem;">
+                    <img src=${element.strDrinkThumb} style="width: 200px;"/>
+                    <div class="cocktail-body">
+                      <h1 class="cocktail-title">${element.strDrink}</h1>
+                      <p class="cocktail-text" id="prova">${element.strInstructions}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>`
+              // `<div>${element.strDrink}</div>`+
+              // `<img src=${element.strDrinkThumb} style="width: 200px;">`+
+              // `<div>${element.strInstructions}</div>`
               // console.log(cocktail_card)
             });
             document.getElementById('cocktail-prova').innerHTML = cocktail_card
