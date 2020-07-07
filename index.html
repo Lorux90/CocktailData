@@ -42,7 +42,7 @@
     </div>
   </div>
   <!--SEZIONE DEI + RICERCATI-->
-  <!-- <div class="container">
+  <div class="container">
       <h2>i cocktail più ricercati</h2>
       <div class="container">
         <div class="row">
@@ -98,14 +98,16 @@
           </div>
         </div>
       </div>  
-    </div> -->
+    </div>
 
   <!-- <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + form_input"></a> -->
   <script>
     function popola_cocktail(array) {
-      // console.log(array);
-      let array_drinks = array.drinks[0]
-      ingredients(array_drinks)
+      // let max_array = array.drinks.length
+      // console.log(max_array);
+      let array_drinks = array.drinks
+      // ingredients(array_drinks)
+      ingredients(array)
       let new_div = document.createElement('div')
 
       let cocktail_card = "";
@@ -125,9 +127,10 @@
         </div>
       </div>`
       });
-      new_div.innerHTML = cocktail_card
-      document.getElementById("cocktail-prova").appendChild(new_div);
-      
+      // new_div.innerHTML = cocktail_card
+      // document.getElementById("cocktail-prova").appendChild(new_div);
+      document.getElementById("cocktail-prova").innerHTML = cocktail_card;
+
       // document.getElementById("cocktail-prova").appendChild = cocktail_card;
       // document.querySelector(".cocktail-img").src =
       //   array.drinks[0].strDrinkThumb;
@@ -137,16 +140,49 @@
       //   array.drinks[0].strInstructions;
     }
 
-    function ingredients(array){
+    // codice matteo
+    // let drink = response.data.drinks[0];
+    // const arrIngr = [];
+    //       for (const test in drink) {
+    //         if (test.includes("strIngredient") && drink[test] !== null) {
+    //           arrIngr.push(drink[test]);
+    //         }
+    //       }
+
+    //       const ingrList = document.getElementById("ingredients-carousel");
+    //       let listaIngr = "";
+    //       arrIngr.forEach((ingredient) => {
+    //         listaIngr += `<li>${ingredient}</li>`;
+    //       });
+    //       ingrList.innerHTML = listaIngr;
+    //     });
+
+
+
+    function ingredients(array) {
       const ingredientsArray = [];
-      console.log(array)
-      for (const property in array) {
-        if(property.includes('strIngredient') && array[property] !== null){
-        console.log(array[property])
-        ingredientsArray.push(array[property]);
+      let max_array = array.drinks.length
+      let ingrArray = array.drinks[0]
+      console.log(max_array);
+
+      for (const prop in ingrArray) {
+        if (prop.includes('strIngredient') && ingrArray[prop] !== null) {
+          console.log(ingrArray[prop])
+          ingredientsArray.push(ingrArray[prop]);
         }
       }
-      console.log(ingredientsArray)
+
+      // for (var a = 0; a<max_array; a++) {
+      //   // ingrArray = ingrArray[a]
+      //   console.log(ingrArray)
+      //   for (const property in ingrArray) {
+      //     if (property.includes('strIngredient'+(a+1)) && ingrArray[property] !== null) {
+      //       console.log(ingrArray[property])
+      //       // ingredientsArray.push(ingrArray[property]);
+      //     }
+      //   }
+    // }
+      // console.log(ingredientsArray)
     };
 
     let form_input = document.getElementById("form-input");
