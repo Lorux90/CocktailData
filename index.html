@@ -1,49 +1,48 @@
-|<!DOCTYPE html>
+|
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
-      crossorigin="anonymous"
-    />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
-    <title>Document</title>
-  </head>
-  <body>
-    
-    <!--Search toolbar-->
-    <nav class="navbar navbar-light bg-light">
-        <h3 class="navbar-brand">Wellcome to the jungle baby!</h3>
-      <input
-        class="form-control mr-sm-2"
-        id="form-input"
-        type="search"
-        placeholder="search here"
-        aria-label="Search"
-      />
-      <button
-        class="btn btn-outline-success my-2 my-sm-0"
-        id="form-btn"
-        type="submit"
-      >Search</button>
-    </nav>
-    <!--RISULTATO DELLA RICERCA (REINDIRIZZARE SU UN'ALTRA PAGINA?)-->
-    <div class="container-cocktail text-center" id="cocktail-prova">
-        
-        <div class="container" id="cocktail">
-        <div class="cocktail" style="width: 18rem;">
-          <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-          <div class="cocktail-body">
-            <h1 class="cocktail-title"></h1>
-            <p class="cocktail-text" id="prova"></p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+  <title>Document</title>
+</head>
+
+<body>
+  <!--Search toolbar-->
+  <nav class="navbar navbar-light bg-light">
+    <h3 class="navbar-brand">Wellcome to the jungle baby!</h3>
+    <input class="form-control mr-sm-2" id="form-input" type="search" placeholder="search here" aria-label="Search" />
+    <button class="btn btn-outline-success my-2 my-sm-0" id="form-btn" type="submit">
+      Search
+    </button>
+  </nav>
+  <!--RISULTATO DELLA RICERCA (REINDIRIZZARE SU UN'ALTRA PAGINA?)-->
+  <div class="container justify-content-center text-center mt-5">
+    <div class="row" id="cocktail-prova">
+      <div class="col-sm-3">
+        <div class="cocktail">
+          <img class="cocktail-img img-fluid" src="//placehold.it/500x200" alt="cocktail image" />
+          <div class="cocktail-block">
+            <h4 class="cocktail-title">Card title</h4>
+            <p class="cocktail-text">
+              This is a longer card with supporting text below as a natural
+              lead-in to additional content. This content is a little bit
+              longer.
+            </p>
+            <p class="cocktail-text">
+              <small class="cocktail-muted">Last updated 3 mins ago</small>
+            </p>
           </div>
+        </div>
       </div>
     </div>
-    <!--SEZIONE DEI + RICERCATI-->
-    <!-- <div class="container">
+  </div>
+  <!--SEZIONE DEI + RICERCATI-->
+  <!-- <div class="container">
       <h2>i cocktail più ricercati</h2>
       <div class="container">
         <div class="row">
@@ -101,41 +100,70 @@
       </div>  
     </div> -->
 
+  <!-- <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + form_input"></a> -->
+  <script>
+    function popola_cocktail(array) {
+      // console.log(array);
+      let array_drinks = array.drinks[0]
+      ingredients(array_drinks)
+      let new_div = document.createElement('div')
 
-    <!-- <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + form_input"></a> -->
-    <script>
-      function popola_cocktail(array) {
-        console.log(array)
-        let cocktail_card = '';
-          array.drinks.forEach((element) => {
-              cocktail_card = cocktail_card + `<div>${element.strDrink}</div>`+
-              `<img src=${element.strDrinkThumb} style="width: 200px;">`+
-              `<div>${element.strInstructions}</div>`
-              // console.log(cocktail_card)
-            });
-            document.getElementById('cocktail-prova').innerHTML = cocktail_card
-        // document.querySelector(".cocktail-img").src =
-        //   array.drinks[0].strDrinkThumb;
-        // document.querySelector(".cocktail-title").textContent =
-        //   array.drinks[0].strDrink;
-        // document.querySelector(".cocktail-text").textContent =
-        //   array.drinks[0].strInstructions;
-      }
-
-      let form_input = document.getElementById("form-input");
-      let btn_input = document.getElementById("form-btn");
-      btn_input.addEventListener("click", () => {
-        axios
-          .get(
-            "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-              form_input.value
-          )
-          .then((response) => {
-              // console.log(form_input)
-              // console.log(response.data)
-            popola_cocktail(response.data);
-          });
+      let cocktail_card = "";
+      array.drinks.forEach((element) => {
+        cocktail_card =
+          cocktail_card +
+          `<div class="col-sm-4">` +
+          `<div class="cocktail">` +
+          `<img class="cocktail-img img-fluid" src=${element.strDrinkThumb} alt="cocktail image" />` +
+          `<div class="cocktail-block">` +
+          `<h4 class="cocktail-title">${element.strDrink}</h4>` +
+          `<p class="cocktail-text">${element.strInstructions}</p>` +
+          `<p class="cocktail-text">
+              <small class="cocktail-muted">Last updated 3 mins ago</small>
+            </p>
+          </div>
+        </div>
+      </div>`
       });
-    </script>
-  </body>
+      new_div.innerHTML = cocktail_card
+      document.getElementById("cocktail-prova").appendChild(new_div);
+      
+      // document.getElementById("cocktail-prova").appendChild = cocktail_card;
+      // document.querySelector(".cocktail-img").src =
+      //   array.drinks[0].strDrinkThumb;
+      // document.querySelector(".cocktail-title").textContent =
+      //   array.drinks[0].strDrink;
+      // document.querySelector(".cocktail-text").textContent =
+      //   array.drinks[0].strInstructions;
+    }
+
+    function ingredients(array){
+      const ingredientsArray = [];
+      console.log(array)
+      for (const property in array) {
+        if(property.includes('strIngredient') && array[property] !== null){
+        console.log(array[property])
+        ingredientsArray.push(array[property]);
+        }
+      }
+      console.log(ingredientsArray)
+    };
+
+    let form_input = document.getElementById("form-input");
+    let btn_input = document.getElementById("form-btn");
+    btn_input.addEventListener("click", () => {
+      axios
+        .get(
+          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          form_input.value
+        )
+        .then((response) => {
+          // console.log(form_input)
+          // console.log(response.data)
+          popola_cocktail(response.data);
+        });
+    });
+  </script>
+</body>
+
 </html>
