@@ -23,7 +23,7 @@
   <!--RISULTATO DELLA RICERCA (REINDIRIZZARE SU UN'ALTRA PAGINA?)-->
   <div class="container justify-content-center text-center mt-5">
     <div class="row" id="cocktail-prova">
-      <div class="col-sm-3">
+      <!-- <div class="col-sm-3">
         <div class="cocktail">
           <img class="cocktail-img img-fluid" src="//placehold.it/500x200" alt="cocktail image" />
           <div class="cocktail-block">
@@ -38,76 +38,71 @@
             </p>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!--SEZIONE DEI + RICERCATI-->
-  <div class="container">
-      <h2>i cocktail più ricercati</h2>
-      <div class="container">
-        <div class="row">
-          <div class="col">
-                1 of 2
-            <div class="container" id="cocktail">
-                <div class="cocktail" style="width: 18rem;">
-                  <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-                  <div class="cocktail-body">
-                    <h1 class="cocktail-title"></h1>
-                    <p class="cocktail-text"></p>
-                  </div>
-                </div>
+  <div class="container justify-content-center text-center mt-5">
+    <h2>I cocktail più ricercati</h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-6">
+          1 of 2
+          <div class="container" id="cocktail-1">
+            <div class="cocktail" style="width: 18rem;">
+              <img src="..." class="cocktail-img img-fluid" alt="..." style="width: 400px;" />
+              <div class="cocktail-body">
+                <h1 class="cocktail-title"></h1>
+                <p class="cocktail-text"></p>
               </div>
-          </div>
-          <div class="col">
-            2 of 2
-            <div class="container" id="cocktail">
-                <div class="cocktail" style="width: 18rem;">
-                  <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-                  <div class="cocktail-body">
-                    <h1 class="cocktail-title"></h1>
-                    <p class="cocktail-text"></p>
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col">
-            1 of 2
-            <div class="container" id="cocktail">
-                <div class="cocktail" style="width: 18rem;">
-                  <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-                  <div class="cocktail-body">
-                    <h1 class="cocktail-title"></h1>
-                    <p class="cocktail-text"></p>
-                  </div>
-                </div>
+        <div class="col-sm-6">
+          2 of 2
+          <div class="container" id="cocktail-2">
+            <div class="cocktail" style="width: 18rem;">
+              <img src="..." class="cocktail-img img-fluid" alt="..." style="width: 400px;" />
+              <div class="cocktail-body">
+                <h1 class="cocktail-title"></h1>
+                <p class="cocktail-text"></p>
               </div>
-          </div>
-          <div class="col">
-            2 of 2
-            <div class="container" id="cocktail">
-                <div class="cocktail" style="width: 18rem;">
-                  <img src="..." class="cocktail-img" alt="..." style="width: 200px;" />
-                  <div class="cocktail-body">
-                    <h1 class="cocktail-title"></h1>
-                    <p class="cocktail-text"></p>
-                  </div>
-                </div>
-              </div>
+            </div>
           </div>
         </div>
-      </div>  
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          1 of 2
+          <div class="container" id="cocktail-3">
+            <div class="cocktail" style="width: 18rem;">
+              <img src="..." class="cocktail-img img-fluid" alt="..." style="width: 400px;" />
+              <div class="cocktail-body">
+                <h1 class="cocktail-title"></h1>
+                <p class="cocktail-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          2 of 2
+          <div class="container" id="cocktail-4">
+            <div class="cocktail" style="width: 18rem;">
+              <img src="..." class="cocktail-img img-fluid" alt="..." style="width: 400px;" />
+              <div class="cocktail-body">
+                <h1 class="cocktail-title"></h1>
+                <p class="cocktail-text"></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 
-  <!-- <a href="https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" + form_input"></a> -->
   <script>
     function popola_cocktail(array) {
-      // let max_array = array.drinks.length
-      // console.log(max_array);
       let array_drinks = array.drinks
-      // ingredients(array_drinks)
-      ingredients(array)
       let new_div = document.createElement('div')
 
       let cocktail_card = "";
@@ -121,84 +116,43 @@
           `<h4 class="cocktail-title">${element.strDrink}</h4>` +
           `<p class="cocktail-text">${element.strInstructions}</p>` +
           `<p class="cocktail-text">
-              <small class="cocktail-muted">Last updated 3 mins ago</small>
+              <small class="cocktail-muted">` + ingredients(element) + `</small>
             </p>
           </div>
         </div>
       </div>`
       });
-      // new_div.innerHTML = cocktail_card
-      // document.getElementById("cocktail-prova").appendChild(new_div);
       document.getElementById("cocktail-prova").innerHTML = cocktail_card;
-
-      // document.getElementById("cocktail-prova").appendChild = cocktail_card;
-      // document.querySelector(".cocktail-img").src =
-      //   array.drinks[0].strDrinkThumb;
-      // document.querySelector(".cocktail-title").textContent =
-      //   array.drinks[0].strDrink;
-      // document.querySelector(".cocktail-text").textContent =
-      //   array.drinks[0].strInstructions;
     }
 
-    // codice matteo
-    // let drink = response.data.drinks[0];
-    // const arrIngr = [];
-    //       for (const test in drink) {
-    //         if (test.includes("strIngredient") && drink[test] !== null) {
-    //           arrIngr.push(drink[test]);
-    //         }
-    //       }
-
-    //       const ingrList = document.getElementById("ingredients-carousel");
-    //       let listaIngr = "";
-    //       arrIngr.forEach((ingredient) => {
-    //         listaIngr += `<li>${ingredient}</li>`;
-    //       });
-    //       ingrList.innerHTML = listaIngr;
-    //     });
-
-
-
-    function ingredients(array) {
+    function ingredients(element) {
       const ingredientsArray = [];
-      let max_array = array.drinks.length
-      let ingrArray = array.drinks[0]
-      console.log(max_array);
+      let x = '';
+      for (const prop in element) {
+        if (prop.includes('strIngredient') && element[prop] !== null && element[prop] !== "") {
+          ingredientsArray.push(element[prop]);
+        };
+      };
+      let ingr_return = ingredientsArray.map(ingredient =>{
+        return "<div>"+
+          ingredient +
+          "</div>"
+      });
+      return (ingr_return.join(" "));
+      };
 
-      for (const prop in ingrArray) {
-        if (prop.includes('strIngredient') && ingrArray[prop] !== null) {
-          console.log(ingrArray[prop])
-          ingredientsArray.push(ingrArray[prop]);
-        }
-      }
-
-      // for (var a = 0; a<max_array; a++) {
-      //   // ingrArray = ingrArray[a]
-      //   console.log(ingrArray)
-      //   for (const property in ingrArray) {
-      //     if (property.includes('strIngredient'+(a+1)) && ingrArray[property] !== null) {
-      //       console.log(ingrArray[property])
-      //       // ingredientsArray.push(ingrArray[property]);
-      //     }
-      //   }
-    // }
-      // console.log(ingredientsArray)
-    };
-
-    let form_input = document.getElementById("form-input");
-    let btn_input = document.getElementById("form-btn");
-    btn_input.addEventListener("click", () => {
-      axios
-        .get(
-          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-          form_input.value
-        )
-        .then((response) => {
-          // console.log(form_input)
-          // console.log(response.data)
-          popola_cocktail(response.data);
-        });
-    });
+      let form_input = document.getElementById("form-input");
+      let btn_input = document.getElementById("form-btn");
+      btn_input.addEventListener("click", () => {
+        axios
+          .get(
+            "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+            form_input.value
+          )
+          .then((response) => {
+            popola_cocktail(response.data);
+          });
+      });
   </script>
 </body>
 
