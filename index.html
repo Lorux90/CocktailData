@@ -11,18 +11,19 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class="">
   <!--Search toolbar-->
-  <nav class="navbar navbar-light bg-light">
-    <h3 class="navbar-brand">Wellcome to the jungle baby!</h3>
-    <input class="form-control mr-sm-2" id="form-input" type="search" placeholder="search here" aria-label="Search" />
-    <button class="btn btn-outline-success my-2 my-sm-0" id="form-btn" type="submit">
+  <nav class="navbar navbar-light bg-dark mt-n4 text-white">
+    <h2 class="navbar-brand text-white">Welcome to the jungle baby!</h2>
+    <input class="form-control mr-sm-2 col-xs-4 w-50" id="form-input" type="search" placeholder="digita qui il cocktail che vuoi trovare"
+      aria-label="Search" />
+    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="form-btn" type="submit">
       Search
     </button>
   </nav>
   <!--RISULTATO DELLA RICERCA (REINDIRIZZARE SU UN'ALTRA PAGINA?)-->
-  <div class="container justify-content-center text-center mt-5">
-    <div class="row" id="cocktail-prova">
+  <!-- <div class="container justify-content-center text-center mt-5">
+    <div class="row" id="cocktail-prova"> -->
       <!-- <div class="col-sm-3">
         <div class="cocktail">
           <img class="cocktail-img img-fluid" src="//placehold.it/500x200" alt="cocktail image" />
@@ -41,9 +42,112 @@
       </div> -->
     </div>
   </div>
+  <div class="d-flex flex-row flex-wrap mt-5" id="cocktail-search">
+    <div class="col-md-12"><br></div>
+    <!-- <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+          <br>
+          <hr>
+          Ingredienti:
+          <br>
+        </div>
+        <button class="btn btn-square btn-info w-50 mx-auto mb-3">Maggiori info</button>
+        <div class="card-footer">
+          <button class="btn btn-success btn-block w-75 mx-auto">Aggiungilo ai tuoi preferiti!</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+          <br>
+          <hr>
+          Ingredienti:
+          <br>
+        </div>
+        <button class="btn btn-square btn-info w-50 mx-auto mb-3">Maggiori info</button>
+        <div class="card-footer">
+          <button class="btn btn-success btn-block w-75 mx-auto">Aggiungilo ai tuoi preferiti!</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+          <br>
+          <hr>
+          Ingredienti:
+          <br>
+        </div>
+        <button class="btn btn-square btn-info w-50 mx-auto mb-3">Maggiori info</button>
+        <div class="card-footer">
+          <button class="btn btn-success btn-block w-75 mx-auto">Aggiungilo ai tuoi preferiti!</button>
+        </div>
+      </div>
+    </div> -->
+  </div>
   <!--SEZIONE DEI + RICERCATI-->
   <div class="container justify-content-center text-center mt-5">
     <h2>I cocktail più ricercati</h2>
+  </div>
+  <div class="d-flex flex-row flex-wrap">
+    <div class="col-md-12"><br></div>
+    <div class="col-md-3">
+      <div class="card-1">
+        <div class="card-header-1 text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid-1 img-thumbnail"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-2">
+        <div class="card-header-2 text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid-2 img-thumbnail"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-3">
+        <div class="card-header-3 text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid-3 img-thumbnail"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <div class="card-4">
+        <div class="card-header-4 text-center"><strong>Cocktail</strong>
+        </div>
+        <div class="card-body">
+          <img class="img-fluid-4 img-thumbnail"
+            src="https://images.unsplash.com/photo-1533841175647-39fea57b86ba?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=4b9139ac1d2962230f2840560117782b&auto=format&fit=crop&w=1500&q=80">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container justify-content-center text-center mt-5">
+    <!-- <h2>I cocktail più ricercati</h2>
     <div class="container">
       <div class="row">
         <div class="col-sm-6">
@@ -97,7 +201,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 
   <script>
@@ -109,20 +213,29 @@
       array.drinks.forEach((element) => {
         cocktail_card =
           cocktail_card +
-          `<div class="col-sm-4">` +
-          `<div class="cocktail">` +
-          `<img class="cocktail-img img-fluid" src=${element.strDrinkThumb} alt="cocktail image" />` +
-          `<div class="cocktail-block">` +
-          `<h4 class="cocktail-title">${element.strDrink}</h4>` +
-          `<p class="cocktail-text">${element.strInstructions}</p>` +
-          `<p class="cocktail-text">
-              <small class="cocktail-muted">` + ingredients(element) + `</small>
-            </p>
-          </div>
-        </div>
-      </div>`
+          // `<h1 class="col-md-12">Ecco il risultato della tua ricerca: "`+ form_input + `"</h1>`+
+          `<div class="col-md-4 mt-3">`+
+            `<div class="card h-100">`+
+              `<div class="card-header bg-dark text-white text-center"><strong>Cocktail: ${element.strDrink}</strong>`+
+              `</div>`+
+              `<div class="card-body">`+
+                `<img class="img-fluid"`+
+                `src=${element.strDrinkThumb}>`+
+                `<p class="card-text">${element.strInstructions}</p>`+
+                `<hr>`+
+                `Ingredienti:`+
+                `<small class="text-muted">`+ ingredients(element) + `</small>`+
+                `<br>`+
+              `</div>`+
+              `<button class="btn btn-square btn-info w-50 mx-auto mb-3">Maggiori info</button>`+
+              `<div class="card-footer">`+
+              `<button class="btn btn-success btn-block w-75 mx-auto mb-3">Aggiungilo ai tuoi preferiti!</button>`+
+              `</div>`+
+            `</div>`+
+          `</div>`
       });
-      document.getElementById("cocktail-prova").innerHTML = cocktail_card;
+      document.getElementById("cocktail-search").innerHTML = cocktail_card;
+      // document.getElementById("cocktail-prova").innerHTML = cocktail_card;
     }
 
     function ingredients(element) {
@@ -133,26 +246,50 @@
           ingredientsArray.push(element[prop]);
         };
       };
-      let ingr_return = ingredientsArray.map(ingredient =>{
-        return "<div>"+
+      let ingr_return = ingredientsArray.map(ingredient => {
+        return "<div>" +
           ingredient +
           "</div>"
       });
       return (ingr_return.join(" "));
-      };
+    };
 
-      let form_input = document.getElementById("form-input");
-      let btn_input = document.getElementById("form-btn");
-      btn_input.addEventListener("click", () => {
-        axios
-          .get(
-            "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
-            form_input.value
-          )
-          .then((response) => {
-            popola_cocktail(response.data);
-          });
-      });
+    let form_input = document.getElementById("form-input");
+    let btn_input = document.getElementById("form-btn");
+    btn_input.addEventListener("click", () => {
+      axios
+        .get(
+          "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=" +
+          form_input.value
+        )
+        .then((response) => {
+          popola_cocktail(response.data);
+        });
+    });
+
+    
+    function showfavorites() {
+        const idfav = [11007, 11008, 11003, 11006];
+        let i = 0;
+        idfav.forEach((element) => {
+          console.log(element);
+          axios
+            .get(
+              "https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=" +
+                element
+            )
+            .then((response) => {
+              i++;
+              let drink = response.data.drinks[0];
+              console.log(drink);
+              let cocktailpref = document.getElementById("card-" + i);
+              document.querySelector(".card-header-" + i).textContent = drink.strDrink
+              document.querySelector(".img-fluid-" + i).src = drink.strDrinkThumb
+              console.log(cocktailpref);
+            });
+        });
+    }
+    showfavorites();
   </script>
 </body>
 
