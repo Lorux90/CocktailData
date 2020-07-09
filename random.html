@@ -7,15 +7,30 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
   <title>Random Cocktail</title>
 </head>
-<body class="">
+<body class="" style="background-color: #A68E5A;">
   <!--Search toolbar-->
-  <nav class="navbar navbar-light bg-dark mt-n1 text-white">
+ <!--  <nav class="navbar navbar-light bg-dark mt-n1 text-white">
     <h2 class="navbar-brand text-white">Random Cocktails</h2>
     <input class="form-control mr-sm-2 col-xs-4 w-50" id="form-input" type="search"
       placeholder="se questo cocktail non è quello che volevi prova a cercare di nuovo" aria-label="Search" />
     <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="form-btn" type="submit">
       Search
     </button>
+  </nav> -->
+  <nav class="navbar navbar-light bg-dark mt-0 mb-2 text-white  align-items-center" >
+    <img src="TheGreenDragon.png"  width="60" height="60" class="img-fluid" alt="Responsive image">
+    <h2 class="navbar-brand " style="color:#A68E5A">Random Cocktail Page</h2>
+    <button class="btn btn-outline-success my-2 my-sm-0 " style="color:#A68E5A" id="home-btn" type="submit">
+      Home
+    </button>    
+    <button class="btn btn-outline-success my-2 my-sm-0 "style="color:#A68E5A" id="mix-btn" type="submit">
+      mix@home
+    </button>
+   
+    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="random-btn" type="submit">
+      Change!
+    </button>
+  
   </nav>
   <!-- <div class="d-flex flex-row flex-wrap">
     <div class="cocktail" id="cocktail-title"></div> 
@@ -55,10 +70,19 @@
       document.getElementById('cocktail-instructions').textContent = cocktail_random.drinks[0].strInstructions;
       // document.getElementById('cocktail-ingredients').textContent = cocktail_random.drinks[0].strIngredient;
 
-
-
-
     })
+
+    let btn_random = document.getElementById("random-btn");
+    let btn_home = document.getElementById("home-btn");
+    
+   
+    btn_random.addEventListener("click",()=>{
+      location.reload(); 
+    })
+
+    btn_home.addEventListener("click", () =>{
+      location.href = "/home";
+});
   </script>
 </body>
 </html>
