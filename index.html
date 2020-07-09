@@ -125,26 +125,26 @@
       let array_drinks = array.drinks
 
       let cocktail_card = "";
-      array.drinks.forEach((element) => {
+      array.drinks.forEach((drink) => {
         cocktail_card =
           cocktail_card +
           // `<h1 class="col-md-12">Ecco il risultato della tua ricerca: "`+ form_input + `"</h1>`+
           `<div class="col-md-4 ">` +
           `<div class="card h-100">` +
-          `<div class="card-header bg-dark text-white text-center"><strong>Cocktail: ${element.strDrink}</strong>` +
+          `<div class="card-header bg-dark text-white text-center"><strong>Cocktail: ${drink.strDrink}</strong>` +
           `</div>` +
           `<div class="card-body">` +
           `<img class="img-fluid"` +
-          `src=${element.strDrinkThumb}>` +
-          `<div class="card-id">Codice: ${element.idDrink}</div>` +
-          `<p class="card-text">${element.strInstructions}</p>` +
+          `src=${drink.strDrinkThumb}>` +
+          `<div class="card-id">Codice: ${drink.idDrink}</div>` +
+          `<p class="card-text">${drink.strInstructions}</p>` +
           `<hr>` +
           `Ingredienti:` +
-          `<div class="text-muted">` + ingredients(element) + `</div>` +
+          `<div class="text-muted">` + ingredients(drink) + `</div>` +
           `<br>` +
           `</div>` +
-          // `<button class="btn btn-square btn-info w-50 mx-auto mb-3" onclick="showDetails(${element.idDrink})"><a href"/details.html:${element.idDrink}">Maggiori info</a></button>` +
-          `<button class="btn btn-square btn-info w-50 mx-auto mb-3"><a href="./details?id=${element.idDrink}">Maggiori info</a></button>` +
+          // `<button class="btn btn-square btn-info w-50 mx-auto mb-3" onclick="showDetails(${drink.idDrink})"><a href"/details.html:${drink.idDrink}">Maggiori info</a></button>` +
+          `<button class="btn btn-square btn-info w-50 mx-auto mb-3"><a href="./details?id=${drink.idDrink}">Maggiori info</a></button>` +
           `<div class="card-footer">` +
           `<button class="btn btn-success btn-block w-75 mx-auto mb-3">Aggiungilo ai tuoi preferiti!</button>` +
           `</div>` +
@@ -155,12 +155,12 @@
       // document.getElementById("cocktail-prova").innerHTML = cocktail_card;
     }
 
-    function ingredients(element) {
+    function ingredients(drink) {
       const ingredientsArray = [];
-      let x = '';
-      for (const prop in element) {
-        if (prop.includes('strIngredient') && element[prop] !== null && element[prop] !== "") {
-          ingredientsArray.push(element[prop]);
+      // let x = '';
+      for (const prop in drink) {
+        if (prop.includes('strIngredient') && drink[prop] !== null && drink[prop] !== "") {
+          ingredientsArray.push(drink[prop]);
         };
       };
       let ingr_return = ingredientsArray.map(ingredient => {
