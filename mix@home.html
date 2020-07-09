@@ -1,29 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
   <title>Mix @ home</title>
 </head>
+
 <body>
-  <h1>prova</h1>
+  <!--Search toolbar-->
+  <nav class="navbar navbar-light bg-dark mt-0 text-white">
+    <h2 class="navbar-brand text-white">Welcome to the jungle baby!</h2>
+    <input class="form-control mr-sm-2 col-xs-4 w-50" id="form-input" type="search"
+      placeholder="digita qui il cocktail che vuoi trovare" aria-label="Search" />
+    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="form-btn" type="submit">
+      Search
+    </button>
+  </nav>
+  <h3 class="text-center mt-3">Cerca tra gli ingredienti che hai a casa e prova a vedere se trovi un nuovo cocktail!
+  </h3>
   <div class="container">
-    <input type="checkbox">
-    <div class="cocktail" id="cocktail-title"></div>
-    <img src="" alt="" id="cocktail-img" style="width: 200px;">
+    <!-- <div class="cocktail" id="cocktail-title"></div>
+      <img src="" alt="" id="cocktail-img" style="width: 200px;"> -->
   </div>
+  <form action="/mix@home">
+    <div class="ingredients" id="ingredients"></div>
+    <input type="submit" value="Submit">
+  </form>
   <script>
 
-    axios.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").then((response) =>{
-      console.log(response.data);
-      let cocktail_random = response.data
-
-
-
-
+    axios.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").then((response) => {
+      // console.log(response.data);
+      let cocktail_mix = [];
+      let cocktail_html = "";
+      response.data.drinks.forEach((element) => {
+        cocktail_mix.push(element.strIngredient1);
+      })
+      cocktail_mix.sort();
+      // console.log(new_cocktail_array)
+      // console.log(cocktail_mix)
+      cocktail_mix.forEach((ingredient) => {
+        // console.log(ingredient)
+        cocktail_html += `
+          <input type="checkbox" name="ingredients1" value="${ingredient}">
+          <label for="vehicle1"> ${ingredient}</label><br>
+          `;
+        // document.getElementById('ingredients').innerText = ingredient.strIngredient1;
+      });
+      document.querySelector('.ingredients').innerHTML = cocktail_html;
     })
+
+    // let params = new URLSearchParams(window.location.search);
+    // let params = new URLSearchParams(window.location.search);
+    // params.forEach(function (value) {
+    //   console.log(value);
+    // })  
+    // let nameIngredient = params.get("ingredients1");
+    // console.log('Ingrediente: ' + nameIngredient);
+
+    ingredient_mix()
+
+    function ingredient_mix() {
+      let array = [];
+      let params = new URLSearchParams(window.location.search);
+      params.forEach(function (value) {
+
+        // console.log('Ingrediente: ' + elemento);
+        axios.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + value).then((response) => {
+          console.log(response.data)
+          array.push(response.data.drinks)
+        })
+        
+      })
+      console.log(array)
+      // array[][]
+    }
+
   </script>
 </body>
+
 </html>
