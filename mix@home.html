@@ -1,90 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/assets/index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+      crossorigin="anonymous"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <title>Mix @ home</title>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
-  <title>Mix @ home</title>
-</head>
+  <body class="" style="background-color: #5e7247;">
+    <!--Search toolbar-->
+    <nav
+      class="navbar navbar-light bg-dark mt-0 mb-2 text-white align-items-center"
+    >
+      <img
+        src="TheGreenDragon.png"
+        width="60"
+        height="60"
+        class="img-fluid"
+        alt="Responsive image"
+      />
+      <h2 class="navbar-brand text-white">Random Cocktail Page</h2>
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 text-white"
+        id="home-btn"
+        type="submit"
+      >
+        Home
+      </button>
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 text-white"
+        id="mix-btn"
+        type="submit"
+      >
+        mix@home
+      </button>
 
-<body style="background-color:#A68E5A">
-  <!--Search toolbar-->
-  <nav class="navbar navbar-light bg-dark mt-0 mb-2 text-white  align-items-center" >
-    <img src="TheGreenDragon.png"  width="60" height="60" class="img-fluid" alt="Responsive image">
-    <h2 class="navbar-brand " style="color:#A68E5A">Random Cocktail Page</h2>
-    <button class="btn btn-outline-success my-2 my-sm-0 " style="color:#A68E5A" id="home-btn" type="submit">
-      Home
-    </button>    
-    <button class="btn btn-outline-success my-2 my-sm-0 "style="color:#A68E5A" id="mix-btn" type="submit">
-      mix@home
-    </button>
-   
-    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="random-btn" type="submit">
-      Change!
-    </button>
-  <h3 class="text-center mt-3">Cerca tra gli ingredienti che hai a casa e prova a vedere se trovi un nuovo cocktail!
-  </h3>
-  <div class="container">
-    <!-- <div class="cocktail" id="cocktail-title"></div>
+      <button
+        class="btn btn-outline-success my-2 my-sm-0 text-white"
+        id="random-btn"
+        type="submit"
+      >
+        Change!
+      </button>
+    </nav>
+    <h3 class="text-center mt-3">
+      Cerca tra gli ingredienti che hai a casa e prova a vedere se trovi un
+      nuovo cocktail!
+    </h3>
+    <div class="container">
+      <!-- <div class="cocktail" id="cocktail-title"></div>
       <img src="" alt="" id="cocktail-img" style="width: 200px;"> -->
-  </div>
-  <form action="/mix@home">
-    <div class="ingredients" id="ingredients"></div>
-    <input type="submit" value="Submit">
-  </form>
-  <script>
-
-    axios.get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").then((response) => {
-      // console.log(response.data);
-      let cocktail_mix = [];
-      let cocktail_html = "";
-      response.data.drinks.forEach((element) => {
-        cocktail_mix.push(element.strIngredient1);
-      })
-      cocktail_mix.sort();
-      // console.log(new_cocktail_array)
-      // console.log(cocktail_mix)
-      cocktail_mix.forEach((ingredient) => {
-        // console.log(ingredient)
-        cocktail_html += `
+    </div>
+    <form action="/mix@home">
+      <div class="ingredients" id="ingredients"></div>
+      <input type="submit" value="Submit" />
+    </form>
+    <script>
+      axios
+        .get("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
+        .then((response) => {
+          // console.log(response.data);
+          let cocktail_mix = [];
+          let cocktail_html = "";
+          response.data.drinks.forEach((element) => {
+            cocktail_mix.push(element.strIngredient1);
+          });
+          cocktail_mix.sort();
+          // console.log(new_cocktail_array)
+          // console.log(cocktail_mix)
+          cocktail_mix.forEach((ingredient) => {
+            // console.log(ingredient)
+            cocktail_html += `
           <input type="checkbox" name="ingredients1" value="${ingredient}">
           <label for="vehicle1"> ${ingredient}</label><br>
           `;
-        // document.getElementById('ingredients').innerText = ingredient.strIngredient1;
+            // document.getElementById('ingredients').innerText = ingredient.strIngredient1;
+          });
+          document.querySelector(".ingredients").innerHTML = cocktail_html;
+        });
+
+      // let params = new URLSearchParams(window.location.search);
+      // let params = new URLSearchParams(window.location.search);
+      // params.forEach(function (value) {
+      //   console.log(value);
+      // })
+      // let nameIngredient = params.get("ingredients1");
+      // console.log('Ingrediente: ' + nameIngredient);
+
+      ingredient_mix();
+
+      function ingredient_mix() {
+        let array = [];
+        let params = new URLSearchParams(window.location.search);
+        params.forEach(function (value) {
+          // console.log('Ingrediente: ' + elemento);
+          axios
+            .get(
+              "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" +
+                value
+            )
+            .then((response) => {
+              console.log(response.data);
+              array.push(response.data.drinks);
+            });
+        });
+        console.log(array);
+        // array[][]
+      }
+      let btn_random = document.getElementById("random-btn");
+      let btn_home = document.getElementById("home-btn");
+      let btn_mix = document.getElementById("mix-btn");
+
+      btn_random.addEventListener("click", () => {
+        location.href = "/random";
       });
-      document.querySelector('.ingredients').innerHTML = cocktail_html;
-    })
-
-    // let params = new URLSearchParams(window.location.search);
-    // let params = new URLSearchParams(window.location.search);
-    // params.forEach(function (value) {
-    //   console.log(value);
-    // })  
-    // let nameIngredient = params.get("ingredients1");
-    // console.log('Ingrediente: ' + nameIngredient);
-
-    ingredient_mix()
-
-    function ingredient_mix() {
-      let array = [];
-      let params = new URLSearchParams(window.location.search);
-      params.forEach(function (value) {
-
-        // console.log('Ingrediente: ' + elemento);
-        axios.get("https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=" + value).then((response) => {
-          console.log(response.data)
-          array.push(response.data.drinks)
-        })
-        
-      })
-      console.log(array)
-      // array[][]
-    }
-
-  </script>
-</body>
-
+      btn_mix.addEventListener("click", () => {
+        location.reload();
+      });
+      btn_home.addEventListener("click", () => {
+        location.href = "/home";
+      });
+    </script>
+  </body>
 </html>
