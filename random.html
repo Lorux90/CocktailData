@@ -10,40 +10,83 @@
       crossorigin="anonymous"
     />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+      integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+      crossorigin="anonymous"
+    ></script>
     <title>Random Cocktail</title>
   </head>
   <body class="" style="background-color: #a68e5a;">
     <!--Search toolbar-->
-    <!--  <nav class="navbar navbar-light bg-dark mt-n1 text-white">
-    <h2 class="navbar-brand text-white">Random Cocktails</h2>
-    <input class="form-control mr-sm-2 col-xs-4 w-50" id="form-input" type="search"
-      placeholder="se questo cocktail non è quello che volevi prova a cercare di nuovo" aria-label="Search" />
-    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="form-btn" type="submit">
-      Search
-    </button>
-  </nav> -->
-  <nav class="navbar navbar-light bg-dark mt-0 mb-2 text-white  align-items-center" >
-    <img src="TheGreenDragon.png"  width="60" height="60" class="img-fluid" alt="Responsive image">
-    <h2 class="navbar-brand " style="color:#A68E5A">Random Cocktail Page</h2>
-    <button class="btn btn-outline-success my-2 my-sm-0 " style="color:#A68E5A" id="home-btn" type="submit">
-      Home
-    </button>    
-    <button class="btn btn-outline-success my-2 my-sm-0 "style="color:#A68E5A" id="mix-btn" type="submit">
-      mix@home
-    </button>
-   
-    <button class="btn btn-outline-success my-2 my-sm-0 text-white" id="random-btn" type="submit">
-      Change!
-    </button>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark mt-0 mb-2 p-1 text-white">
+      <img
+        src="TheGreenDragon.png"
+        width="60"
+        height="60"
+        class="navbar-brand"
+        alt="Responsive image"
+      />
+      <h1 class="navbar-brand " style="color: #5e7247;">
+        <b>Random Cocktail Page</b>
+      </h1>
+      
+      <button
+        class="navbar-toggler text-white" 
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav  mt-lg-0 align-items-center text-center" >
+          <li class="nav-item active">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0 text-white align-items-center text-center justify-content-center"
+              id="random-btn"
+              type="submit"
+            >
+              home
+            </button>
+          </li>
+          <li class="nav-item ">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0 text-white align-items-center text-center justify-content-center"
+              id="mix-btn"
+              type="submit"
+            >
+              mix@home
+            </button>
+          </li>
+          <li class="nav-item ">
+            <button
+              class="btn btn-outline-success my-2 my-sm-0 text-white align-items-center text-center justify-content-center"
+              id="mix-btn"
+              type="submit"
+            >
+              change!
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+  <!-- card random cocktail -->
   
-  </nav>
-
-
-  <!-- <div class="d-flex flex-row flex-wrap">
-    <div class="cocktail" id="cocktail-title"></div> 
-    <img src="" alt="" id="cocktail-img" style="width: 200px;">
-    <div id="cocktail-instructions"></div>
-  </div> -->
   <div class="d-flex flex-row flex-wrap justify-content-center">
     <div class="col-md-12"><br></div>
     <div class="col-md-4 mt-3">
@@ -54,7 +97,7 @@
           <img class="img-fluid img-thumbnail" src="" alt="" id="cocktail-img">
           <br>
           <br>
-          <div class="card-id">
+          <div class="card-description">
             <strong>Ingredients:</strong>
             <p class="card-text" id="cocktail-ingredients"></p>
           </div>
@@ -65,14 +108,6 @@
               alt=""
               id="cocktail-img"
             />
-            <br />
-            <br />
-            <div class="card-id">
-              <strong>Ingredients:</strong>
-              <p class="card-text" id="cocktail-ingredients"></p>
-            </div>
-            <br />
-            <br />
             <div class="card-description">
               <strong>How to do it:</strong>
               <p class="card-text" id="cocktail-instructions"></p>
@@ -82,6 +117,7 @@
       </div>
     </div>
     <script>
+      
       axios
         .get("https://www.thecocktaildb.com/api/json/v1/1/random.php")
         .then((response) => {
@@ -124,6 +160,7 @@
       btn_home.addEventListener("click", () => {
         location.href = "/home";
       });
+
     </script>
   </body>
 </html>
